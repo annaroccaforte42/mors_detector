@@ -1,0 +1,59 @@
+Error in <HandleInterpreterException>: Error evaluating expression (ls).
+Execution of your code was aborted.
+root [6] lbc_tree->Print()
+******************************************************************************
+*Tree    :lbc_tree  : LBC Simulation                                         *
+*Entries :        0 : Total =             860 bytes  File  Size =        350 *
+*        :          : Tree compression factor =   1.00                       *
+******************************************************************************
+*Br    0 :edep      : Double_t lbc_tree                                      *
+*Entries :        0 : Total  Size=        495 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+root [7] .q
+➜  build ls
+CMakeCache.txt  cmake_install.cmake  eu152_t0.root  G4LBC     macro
+CMakeFiles      eu152.root           eu152_t1.root  geometry  Makefile
+➜  build root
+root [0] .q
+➜  build man hadd
+➜  build hadd nuovofile.root eu152*
+hadd Target file: nuovofile.root
+hadd compression setting for all output: 1
+hadd Source file 1: eu152.root
+hadd Source file 2: eu152_t0.root
+hadd Source file 3: eu152_t1.root
+hadd Target path: nuovofile.root:/
+➜  build ls
+CMakeCache.txt       eu152.root     G4LBC     Makefile
+CMakeFiles           eu152_t0.root  geometry  nuovofile.root
+cmake_install.cmake  eu152_t1.root  macro
+➜  build  
+➜  build root nuovofile.root 
+root [0] 
+Attaching file nuovofile.root as _file0...
+(TFile *) 0x5c786b2ec580
+root [1] .ls
+TFile**		nuovofile.root	
+ TFile*		nuovofile.root	
+  KEY: TTree	lbc_tree;1	LBC Simulation
+root [2] lbc_tree->Print()
+******************************************************************************
+*Tree    :lbc_tree  : LBC Simulation                                         *
+*Entries :     1617 : Total =           20426 bytes  File  Size =      12885 *
+*        :          : Tree compression factor =   1.57                       *
+******************************************************************************
+*Br    0 :edep      : Double_t lbc_tree                                      *
+*Entries :     1617 : Total  Size=      20061 bytes  File Size  =      12481 *
+*Baskets :        2 : Basket Size=      32000 bytes  Compression=   1.57     *
+*............................................................................*
+root [3] lbc_tree->Draw("edep>>h1(1500,0,1500)","","")
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+(long long) 1617
+root [4] lbc_tree->Integral(1400,1420)
+ROOT_prompt_4:1:11: error: no member named 'Integral' in 'TTree'
+lbc_tree->Integral(1400,1420)
+~~~~~~~~  ^
+root [5] h1->Integral(1400,1420)
+(double) 16.000000
+root [6] .q
