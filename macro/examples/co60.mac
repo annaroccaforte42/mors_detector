@@ -1,0 +1,21 @@
+######################################
+# Co-60 source inside source holder #
+######################################
+
+/run/initialize
+
+/gps/particle ion
+/gps/ion 27 60 0 0
+/gps/energy 0 keV
+/gps/ang/type iso
+/gps/pos/type Volume
+/gps/pos/shape Sphere
+# 5 cm - aluminum source
+/gps/pos/centre 0. -234 -1 mm
+
+/gps/pos/confine physical_source
+/gps/pos/radius 1 mm
+
+/analysis/setFileName co60.root
+/run/printProgress 10000
+/run/beamOn 10000000

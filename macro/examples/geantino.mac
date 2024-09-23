@@ -1,0 +1,19 @@
+#
+# Geantino source
+################################
+
+/run/initialize
+
+/gps/particle geantino
+
+/gps/ang/type iso
+/gps/pos/type Volume
+/gps/pos/shape Sphere
+/gps/pos/centre 0. -186 -1 mm
+
+/gps/pos/confine physical_source
+/gps/pos/radius 1 mm
+
+/analysis/setFileName geantino.root
+/run/printProgress 1
+/run/beamOn 10

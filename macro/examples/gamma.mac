@@ -1,0 +1,17 @@
+#
+# 511 keV gamma source
+################################
+
+/run/initialize
+
+/gps/particle gamma
+/gps/energy 511 keV
+
+/gps/ang/type iso
+
+# 2.5cm = 1cm from the detector front face
+/gps/position 0 0 2.5 cm
+
+/analysis/setFileName lbc_511keV.root
+/run/printProgress 10000000
+/run/beamOn 100000000
